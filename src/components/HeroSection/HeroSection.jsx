@@ -1,9 +1,11 @@
 import React from "react";
 import astro from "@/assets/astro2.png";
 
+
 const HeroSection = () => {
   return (
     <section className="w-full min-h-screen bg-black text-white flex">
+
       <div className="flex-1 flex flex-col justify-center px-12 py-16 space-y-6 bg-black">
         <div className="flex flex-col space-y-2 text-zinc-500 text-sm">
           <span className="cursor-pointer hover:text-white">01</span>

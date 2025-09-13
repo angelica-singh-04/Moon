@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HeroSection from "./components/HeroSection/HeroSection";
 import AboutSection from "./components/About/About";
 import BentoSection from "./components/Bento/Bento";
 import HistorySection from "./components/History/History";
+import Navbar from "./components/Navbar/Navbar";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
-
-
 
 export default function App() {
-   useEffect(() => {
+  useEffect(() => {
     AOS.init({ duration: 1000, once: true }); // animate once on scroll
   }, []);
+
   return (
-    <div className="font-poppins">
-      <HeroSection />
-      <AboutSection />
-      <BentoSection />
-      <HistorySection />
+    <div className="font-poppins bg-black">
+      <Navbar />
+      {/* Add padding-top equal to navbar height (e.g., 64px = pt-16) */}
+      <div className="pt-20">
+        <HeroSection />
+        <AboutSection />
+        <BentoSection />
+        <HistorySection />
+      </div>
     </div>
   );
 }

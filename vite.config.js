@@ -4,7 +4,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     tailwindcss(),
@@ -21,21 +20,13 @@ export default defineConfig({
         scope: '/',
         start_url: '/',
         icons: [
-          {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
-          }
+          { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png' },
+          { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png' }
         ]
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MB
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/api\./,
@@ -57,5 +48,11 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+  },
+  optimizeDeps: {
+    exclude: ['@tailwindcss/oxide', 'lightningcss'],
+  },
+  build: {
+    target: 'esnext',   // ✅ fixes "module.exports" error
   },
 })
