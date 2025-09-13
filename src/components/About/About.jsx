@@ -107,10 +107,10 @@ export default function App() {
             <span className="text-sm text-gray-500 uppercase">
               By Laurent Ballesta
             </span>
-            <h3 className="text-2xl font-bold mt-2">
+            <h3 className="text-xl font-bold mt-2">
               From the Magazine
             </h3>
-            <p className="mt-4 text-gray-300 leading-relaxed">
+            <p className="mt-4 text-gray-300 leading-relaxed text-sm">
               Our special report offers a rare look at life beneath the frozen continent—where penguins, seals, and exotic creatures thrive.
             </p>
           </div>
@@ -121,7 +121,7 @@ export default function App() {
               </svg>
             </button>
             <span className="text-sm uppercase tracking-wider text-gray-400">
-              Explore the space
+              Explore more
             </span>
           </div>
         </div>
