@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Button from "@/components/Button/Button";
-
+import HeroButton from "@/components/Button/Button";
+import Primary from "@/components/PrimaryButton/PrimaryButton";
+import Secondary from "@/components/SecondaryButton/SecondaryButton";
 
 const UploadForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
@@ -18,20 +19,6 @@ const UploadForm = ({ onSubmit }) => {
         setFormData(prevState => ({ ...prevState, [name]: value }));
     };
 
-    // const handleFileChange = (e) => {
-    //     setFile(e.target.files[0]);
-    // };
-
-    // const handleDragOver = (e) => {
-    //     e.preventDefault();
-    // };
-
-    // const handleDrop = (e) => {
-    //     e.preventDefault();
-    //     const droppedFile = e.dataTransfer.files[0];
-    //     setFile(droppedFile);
-    // };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         // Here you would handle the API call to submit the form data and file
@@ -41,103 +28,10 @@ const UploadForm = ({ onSubmit }) => {
 
     return (
         <div className="bg-black p-8 rounded-lg w-full max-w-2xl">
-            {/* <h2 className="text-2xl font-semibold mb-6">Upload Your Media</h2>
-            
-            <div className="mb-6">
-                <h3 className="text-lg font-medium mb-2">Guidelines</h3>
-                <ul className="text-sm text-gray-400 list-disc list-inside">
-                    <li>Allowed file types: JPG, PNG, GIF, MP4.</li>
-                    <li>Maximum file size: 50MB.</li>
-                    <li>Ensure high-quality, original content.</li>
-                </ul>
-            </div> */}
+            <div className='border-b border-neutral-800 p-2 text-md flex justify-end'>Upload Your Media</div>
 
-            {/* <form onSubmit={handleSubmit} className="space-y-6">
-                <p>Name</p>
-                <input 
-                    type="text" 
-                    name="name" 
-                    placeholder="Your Name / Username" 
-                    value={formData.name} 
-                    onChange={handleChange}
-                    required
-                    className="w-full p-3 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <input 
-                    type="text" 
-                    name="title" 
-                    placeholder="Title of Upload (e.g., Milky Way from Bangalore)" 
-                    value={formData.title} 
-                    onChange={handleChange}
-                    required
-                    className="w-full p-3 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <textarea 
-                    name="description" 
-                    placeholder="Description / Story" 
-                    value={formData.description} 
-                    onChange={handleChange}
-                    rows="4"
-                    className="w-full p-3 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-                />
+            <form onSubmit={handleSubmit} className="space-y-4 mt-10">
                 
-                <select 
-                    name="category" 
-                    value={formData.category} 
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                    <option value="Photo">Photo</option>
-                    <option value="Artwork">Artwork</option>
-                    <option value="Wallpaper">Wallpaper</option>
-                    <option value="Video">Video</option>
-                </select>
-
-                <input 
-                    type="text" 
-                    name="tags" 
-                    placeholder="Tags (#moon, #galaxy, #art)" 
-                    value={formData.tags} 
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="Optional Email" 
-                    value={formData.email} 
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-
-                <div 
-                    className="border-2 border-dashed border-gray-600 rounded-lg p-6 text-center cursor-pointer transition-colors duration-200 hover:bg-gray-700"
-                    onDragOver={handleDragOver}
-                    onDrop={handleDrop}
-                    onClick={() => document.getElementById('file-upload').click()}
-                >
-                    <input 
-                        id="file-upload" 
-                        type="file" 
-                        onChange={handleFileChange} 
-                        className="hidden" 
-                    />
-                    {file ? (
-                        <p className="text-sm text-green-400">✅ File Selected: {file.name}</p>
-                    ) : (
-                        <p className="text-sm">Drag & drop a file here, or click to browse</p>
-                    )}
-                </div>
-
-                <button 
-                    type="submit" 
-                    className="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-md transition-colors duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                    Upload Your Media
-                </button>
-            </form> */}
-
-            <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="flex flex-col md:flex-row md:items-center md:space-x-4">
   <label
     htmlFor="file-upload"
@@ -244,11 +138,23 @@ const UploadForm = ({ onSubmit }) => {
                focus:outline-none focus:ring-[0.5px] focus:ring-yellow-400"
   />
 </div>
-{/* 
-                    <Button 
-                    label="Read more"
-                    direction="left"
-                    /> */}
+                {/* <button 
+                    type="submit" 
+                    className="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-md transition-colors duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    Upload Your Media
+                </button> */}
+<div className='flex gap-2 justify-end'>
+        <Secondary
+        label="Cancel"
+        />  
+        <Primary 
+        label="Upload Your Media" 
+        type="submit" 
+        className="text-xs py-1 px-2"
+        />
+
+</div> 
 </form>
 
         </div>
