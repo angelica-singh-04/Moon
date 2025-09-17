@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Link } from "react-router-dom";
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react";
 
 import {
@@ -160,6 +161,9 @@ A gateway to explore the Moon’s history, mysteries, and future possibilities. 
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
                   <a href="#">Wallpapers</a>
+                </NavigationMenuLink>
+                                <NavigationMenuLink asChild>
+                  <Link to="/upload">Upload Photos</Link>
                 </NavigationMenuLink>
               </li>
             </ul>

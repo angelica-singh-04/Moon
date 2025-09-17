@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <section className="w-full min-h-screen bg-black text-white flex">
 
-      <div className="flex-1 flex flex-col justify-center px-12 py-16 space-y-6 bg-black">
+      <div className="flex-1 flex flex-col justify-start px-12 py-6 gap-8 space-y-6 bg-black mt-16">
         <div className="flex flex-col space-y-2 text-zinc-500 text-sm">
           <span className="cursor-pointer hover:text-white">01</span>
           <span className="cursor-pointer hover:text-white">02</span>
@@ -23,7 +23,7 @@ including tides and even the biological rhythms of life.
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-6 text-sm text-zinc-400 mt-8">
+        <div className="grid grid-cols-3 gap-6 text-sm text-zinc-400">
           <div>
             <h4 className="text-white font-medium">Atmosphere</h4>
             <p>Thin exosphere, mostly hydrogen, helium, neon.</p>
