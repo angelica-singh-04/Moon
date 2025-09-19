@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react";
 
 import {
@@ -43,10 +43,14 @@ const components = [
 ];
 
 export function NavigationMenuDemo() {
+  const location = useLocation();
+  const isGalleryActive = location.pathname === '/gallery' || location.pathname === '/images' || location.pathname === '/upload';
+  
   return (
+    <div className="fixed top-0 left-0 right-0 z-50 bg-black backdrop-blur border-b-[0.2px] border-neutral-800 h-22 flex items-center px-4">
     <NavigationMenu viewport={false}>
       <NavigationMenuList>
-                <NavigationMenuItem>
+        <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
             <a href="/docs">About</a>
           </NavigationMenuLink>
@@ -149,12 +153,12 @@ A gateway to explore the Moon’s history, mysteries, and future possibilities. 
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Gallery</NavigationMenuTrigger>
+          <NavigationMenuTrigger className={isGalleryActive ? "text-yellow-500 bg-yellow-500/10" : ""}>Gallery</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[200px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
-                  <a href="#">NASA Images</a>
+                  <a href="/images">NASA Images</a>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
                   <a href="#">Apollo Photos</a>
@@ -268,6 +272,7 @@ A gateway to explore the Moon’s history, mysteries, and future possibilities. 
 
       </NavigationMenuList>
     </NavigationMenu>
+    </div>
   );
 }
 
