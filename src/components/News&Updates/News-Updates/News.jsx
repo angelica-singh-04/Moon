@@ -1,33 +1,109 @@
 import React from 'react';
+import { AnimatedList } from "../../ui/animated-list";
+import { cn } from "@/lib/utils";
+
+let notifications = [
+  {
+    name: "Rare Blue Supermoon Illuminates Night Sky This weekend",
+    description: "The second full moon of December will appear 14% larger and 30% brighter than usual, offering spectacular viewing opportunities for astronomers worldwide.",
+    time: "12/15/2024",
+    icon: "💸",
+    color: "#f2e03eff",
+  },
+
+  {
+    name: "Water Ice Discovered in Permanently Shadowed Lunar Craters",
+    description: "New radar data reveals significant water ice deposits in the Moon's south pole region, potentially crucial for future lunar missions and settlements.",
+    time: "12/12/2024 • NASA",
+    icon: "👤",
+    color: "#FFB800",
+  },
+  {
+    name: "Total Lunar Eclipse Visible Across Americas Next Month",
+    description: "The first total lunar eclipse of 2025 will be visible across North and South America, with totality lasting approximately 85 minutes.",
+    time: "12/10/2024 • IAU",
+    icon: "💬",
+    color: "#FF3D71",
+  },
+  {
+    name: "James Webb Telescope Captures Stunning Moon Formation Images",
+    description: "Unprecedented infrared images reveal new details about how moons form around exoplanets in distant star systems.",
+    time: "12/8/2024 • STScI",
+    icon: "🗞️",
+    color: "#1E86FF",
+  },
+    {
+    name: "Ancient Lunar Lava Tubes Could House Future Moon Bases",
+    description: "Scientists identify stable underground caverns that could provide natural radiation shielding for lunar habitats.",
+    time: "12/5/2024 • JPL",
+    icon: "🗞️",
+    color: "#1E86FF",
+  },
+];
+notifications = Array.from({ length: 10 }, () => notifications).flat();
+const Notification = ({ name, description, time }) => {
+  return (
+    <figure
+      className={cn(
+        "relative mx-auto font-[poppins] min-h-fit w-full max-w-[400px] cursor-pointer border-[0.5px] border-neutral-800 rounded-lg overflow-hidden p-4",
+        // animation styles
+        "transition-all duration-200 ease-in-out hover:scale-[103%]",
+        // light styles
+        "bg-neutral-900",
+        // dark styles
+        // "transform-gpu dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+      )}
+    >
+      <div className="flex flex-row items-center gap-3">
+        {/* <div
+          className="flex size-10 items-center justify-center rounded-2xl"
+          style={{
+            backgroundColor: color,
+          }}
+        >
+          <span className="text-lg">{icon}</span>
+        </div> */}
+        
+        <div className="flex flex-col overflow-hidden p-2">
+            <span className="text-xs text-yellow-500 pb-2">{time}</span>
+          <figcaption className="flex flex-row items-center text-lg font-normal">
+            
+            <span className="text-sm">{name}</span>
+            {/* <span className="mx-1">·</span>
+            <span className="text-xs text-gray-500">{time}</span> */}
+          </figcaption>
+          <p className="text-xs font-normal text-gray-500 pt-2">
+            {description}
+          </p>
+        </div>
+      </div>
+    </figure>
+  );
+};
+
 
 const NewsUpdatesPage = () => {
   return (
-    <div className="flex w-full min-h-screen bg-black text-white font-sans">
+    <div className="flex w-full font-[poppins] min-h-screen bg-black text-white">
       
       {/* Left Column: 30% for Latest News Live */}
-      <div className="w-3/12 border-r border-gray-800 p-8 flex flex-col">
-        <h2 className="text-xl font-bold mb-6 text-gray-200">Latest News Live</h2>
-        <div className="flex-1 overflow-y-auto">
-          {/* Example of a news item */}
-          <div className="mb-4 pb-4 border-b border-gray-800 last:border-b-0">
-            <p className="text-sm text-gray-400">01:45 PM</p>
-            <p className="mt-1 font-semibold text-gray-100">NASA announces new funding for Artemis program.</p>
-          </div>
-          <div className="mb-4 pb-4 border-b border-gray-800 last:border-b-0">
-            <p className="text-sm text-gray-400">01:30 PM</p>
-            <p className="mt-1 font-semibold text-gray-100">SpaceX prepares Falcon Heavy for next launch window.</p>
-          </div>
-          <div className="mb-4 pb-4 border-b border-gray-800 last:border-b-0">
-            <p className="text-sm text-gray-400">12:15 PM</p>
-            <p className="mt-1 font-semibold text-gray-100">ESA's new lunar rover enters final testing phase.</p>
-          </div>
-          {/* Add more news items as needed */}
-        </div>
+    <div className="w-[25%] border-r border-neutral-800 p-8 flex flex-col">
+        <h2 className="text-md font-normal mt-8 text-white pl-2">Latest News Live</h2>
+    <div
+      className="relative flex h-[800px] w-full flex-col overflow-hidden p-2"
+    >
+      <AnimatedList>
+        {notifications.map((item, idx) => (
+          <Notification {...item} key={idx} />
+        ))}
+      </AnimatedList>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
+    </div>
       </div>
 
       {/* Right Column: 70% for Latest Moon Missions */}
       <div className="w-9/12 p-8 flex flex-col space-y-6">
-        <h1 className="text-3xl font-bold mb-4 text-gray-100">Latest Moon Missions</h1>
+        <h1 className="text-5xl font-extrabold mb-4 text-white mt-8">Missions.</h1>
         
         {/* Div 1: Mission 1 */}
         <div className="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-800">
