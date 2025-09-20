@@ -1,6 +1,7 @@
 import React from 'react';
 import { AnimatedList } from "../../ui/animated-list";
 import { cn } from "@/lib/utils";
+import img1 from "@/assets/moon2.jpg";
 
 let notifications = [
   {
@@ -45,11 +46,11 @@ const Notification = ({ name, description, time }) => {
   return (
     <figure
       className={cn(
-        "relative mx-auto font-[poppins] min-h-fit w-full max-w-[400px] cursor-pointer border-[0.5px] border-neutral-800 rounded-lg overflow-hidden p-4",
+        "relative mx-auto font-[poppins] min-h-fit w-full max-w-[400px] cursor-pointer border-[0.5px] border-neutral-900 rounded-lg overflow-hidden p-4",
         // animation styles
         "transition-all duration-200 ease-in-out hover:scale-[103%]",
         // light styles
-        "bg-neutral-900",
+        "bg-neutral-900/70",
         // dark styles
         // "transform-gpu dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
       )}
@@ -84,10 +85,11 @@ const Notification = ({ name, description, time }) => {
 
 const NewsUpdatesPage = () => {
   return (
+    <div>
     <div className="flex w-full font-[poppins] min-h-screen bg-black text-white">
       
       {/* Left Column: 30% for Latest News Live */}
-    <div className="w-[25%] border-r border-neutral-800 p-8 flex flex-col">
+    <div className="w-[35%] border-r border-neutral-800 p-8 flex flex-col">
         <h2 className="text-md font-normal mt-8 text-white pl-2">Latest News Live</h2>
     <div
       className="relative flex h-[800px] w-full flex-col overflow-hidden p-2"
@@ -97,51 +99,102 @@ const NewsUpdatesPage = () => {
           <Notification {...item} key={idx} />
         ))}
       </AnimatedList>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black"></div>
     </div>
       </div>
 
       {/* Right Column: 70% for Latest Moon Missions */}
-      <div className="w-9/12 p-8 flex flex-col space-y-6">
+      <div className="w-9/12 p-8 flex flex-col space-y-10 ">
         <h1 className="text-5xl font-extrabold mb-4 text-white mt-8">Missions.</h1>
-        
-        {/* Div 1: Mission 1 */}
-        <div className="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-800">
-          <h3 className="text-xl font-semibold text-gray-200">Artemis III</h3>
-          <p className="text-sm text-gray-400 mt-1">Status: In development</p>
-          <p className="mt-4 text-gray-300">
-            The Artemis III mission aims to land the first woman and next man on the Moon, specifically at the lunar south pole.
-          </p>
-          <div className="mt-4 text-sm text-gray-500">
-            Target Launch: September 2026
-          </div>
-        </div>
-        
-        {/* Div 2: Mission 2 */}
-        <div className="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-800">
-          <h3 className="text-xl font-semibold text-gray-200">Chang'e 6</h3>
-          <p className="text-sm text-gray-400 mt-1">Status: Completed</p>
-          <p className="mt-4 text-gray-300">
-            China's Chang'e 6 mission successfully returned samples from the far side of the Moon, a historic first.
-          </p>
-          <div className="mt-4 text-sm text-gray-500">
-            Mission Date: May - June 2024
-          </div>
-        </div>
+<div class="w-[80%] flex flex-col pb-10 justify-end border-b-[0.4px] border-neutral-800">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-4">
 
-        {/* Div 3: Mission 3 */}
-        <div className="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-800">
-          <h3 className="text-xl font-semibold text-gray-200">Chandrayaan-4</h3>
-          <p className="text-sm text-gray-400 mt-1">Status: Planned</p>
-          <p className="mt-4 text-gray-300">
-            ISRO is planning the Chandrayaan-4 mission, a collaborative effort for lunar sample return.
-          </p>
-          <div className="mt-4 text-sm text-gray-500">
-            Expected Launch: 2027
-          </div>
-        </div>
+  <div class="bg-neutral-900/70 p-6 shadow-lg">
+<div class="w-18 h-18 bg-black flex items-center justify-center mr-4">
+    <img src={img1}
+    alt="Artemis III mission icon" 
+    class="w-full h-full object-cover rounded-lg"/>
+  </div>
+    <div class="flex items-center mb-4">
+
+      <div>
+        <h2 class="text-md font-medium text-white mt-4">Artemis III</h2>
+        <p class="text-sm text-neutral-600 my-2">First crewed lunar landing since Apollo 17, targeting the lunar south pole.</p>
       </div>
     </div>
+    <div class="flex space-x-4 mt-6">
+      <button class="bg-yellow-500 text-black text-xs font-regular py-2 px-4 hover:bg-yellow-600 transition-colors">View Details</button>    </div>
+  </div>
+
+  <div class="bg-neutral-900/70 p-6 shadow-lg">
+<div class="w-18 h-18 bg-black flex items-center justify-center mr-4">
+    <img src={img1}
+    alt="Artemis III mission icon" 
+    class="w-full h-full object-cover rounded-lg"/>
+  </div>
+    <div class="flex items-center mb-4">
+
+      <div>
+        <h2 class="text-md font-medium text-white mt-4">Artemis III</h2>
+        <p class="text-sm text-neutral-600 my-2">First crewed lunar landing since Apollo 17, targeting the lunar south pole.</p>
+      </div>
+    </div>
+    <div class="flex space-x-4 mt-6">
+      <button class="bg-yellow-500 text-black text-xs font-regular py-2 px-4 hover:bg-yellow-600 transition-colors">View Details</button>    </div>
+  </div>
+
+  <div class="bg-black p-6 shadow-lg">
+
+  </div>
+
+  <div class="bg-black p-6 shadow-lg">
+
+  </div>
+
+    <div class="bg-neutral-900/70 p-6 shadow-lg">
+<div class="w-18 h-18 bg-black flex items-center justify-center mr-4">
+    <img src={img1}
+    alt="Artemis III mission icon" 
+    class="w-full h-full object-cover rounded-lg"/>
+  </div>
+    <div class="flex items-center mb-4">
+
+      <div>
+        <h2 class="text-md font-medium text-white mt-4">Artemis III</h2>
+        <p class="text-sm text-neutral-600 my-2">First crewed lunar landing since Apollo 17, targeting the lunar south pole.</p>
+      </div>
+    </div>
+    <div class="flex space-x-4 mt-6">
+      <button class="bg-yellow-500 text-black text-xs font-regular py-2 px-4 hover:bg-yellow-600 transition-colors">View Details</button>    </div>
+  </div>
+
+    <div class="bg-neutral-900/70 p-6 shadow-lg">
+<div class="w-18 h-18 bg-black flex items-center justify-center mr-4">
+    <img src={img1}
+    alt="Artemis III mission icon" 
+    class="w-full h-full object-cover rounded-lg"/>
+  </div>
+    <div class="flex items-center mb-4">
+
+      <div>
+        <h2 class="text-md font-medium text-white mt-4">Artemis III</h2>
+        <p class="text-sm text-neutral-600 my-2">First crewed lunar landing since Apollo 17, targeting the lunar south pole.</p>
+      </div>
+    </div>
+    <div class="flex space-x-4 mt-6">
+      <button class="bg-yellow-500 text-black text-xs font-regular py-2 px-4 hover:bg-yellow-600 transition-colors">View Details</button>    </div>
+  </div>
+
+</div>
+</div>
+      </div>
+
+        {/* Rightmost column */}
+
+    
+</div>
+
+</div>
   );
 };
 
