@@ -124,7 +124,7 @@ A gateway to explore the Moon’s history, mysteries, and future possibilities. 
             <ul className="grid w-[300px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
-                  <a href="#">
+                  <a href="/news&updates">
                     <div className="font-medium">News & Updates</div>
                     <div className="text-muted-foreground text-xs">
                       Get recent news and breakthroughs about lunar exploration.
