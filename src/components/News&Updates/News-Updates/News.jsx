@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AnimatedList } from "../../ui/animated-list";
 import { cn } from "@/lib/utils";
 import img1 from "@/assets/moon2.jpg";
@@ -84,8 +84,38 @@ const Notification = ({ name, description, time }) => {
 
 
 const NewsUpdatesPage = () => {
+  const [selectedDate, setSelectedDate] = useState(20);
+
+  const dates = [
+    { day: 'S', date: 18 },
+    { day: 'S', date: 19 },
+    { day: 'M', date: 20 },
+    { day: 'T', date: 21 },
+    { day: 'W', date: 22 },
+    { day: 'T', date: 23 },
+    { day: 'F', date: 24 },
+  ];
+
+  const mockEvents = {
+    20: [
+      { time: '10:00 AM', title: 'Artemis III Launch Prep', location: 'Kennedy Space Center' },
+      { time: '2:00 PM', title: 'Mission Briefing', location: 'Johnson Space Center' },
+    ],
+    21: [
+      { time: '11:00 AM', title: 'Lunar Landing Simulation', location: 'Mission Control' },
+      { time: '3:00 PM', title: 'Crew Training Session', location: 'Astronaut Training Facility' },
+    ],
+    22: [
+      { time: '9:00 AM', title: 'Payload Integration Review', location: 'Assembly Building' },
+    ],
+    23: [
+      { time: '1:00 PM', title: 'Launch Readiness Review', location: 'Mission Control' },
+    ],
+  };
+
+  const events = mockEvents[selectedDate] || [];
+
   return (
-    <div>
     <div className="flex w-full font-[poppins] min-h-screen bg-black text-white">
       
       {/* Left Column: 30% for Latest News Live */}
@@ -104,10 +134,10 @@ const NewsUpdatesPage = () => {
       </div>
 
       {/* Right Column: 70% for Latest Moon Missions */}
-      <div className="w-9/12 p-8 flex flex-col space-y-10 ">
+      <div className="w-[50%] p-8 flex flex-col space-y-10 border-r-[0.4px] border-neutral-800 ">
         <h1 className="text-5xl font-extrabold mb-4 text-white mt-8">Missions.</h1>
-<div class="w-[80%] flex flex-col pb-10 justify-end border-b-[0.4px] border-neutral-800">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-4">
+<div class="w-full flex flex-col pb-10 justify-end border-b-[0.4px] border-neutral-800">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4">
 
   <div class="bg-neutral-900/70 p-6 shadow-lg">
 <div class="w-18 h-18 bg-black flex items-center justify-center mr-4">
@@ -142,10 +172,10 @@ const NewsUpdatesPage = () => {
     <div class="flex space-x-4 mt-6">
       <button class="bg-yellow-500 text-black text-xs font-regular py-2 px-4 hover:bg-yellow-600 transition-colors">View Details</button>    </div>
   </div>
-
+{/* 
   <div class="bg-black p-6 shadow-lg">
 
-  </div>
+  </div> */}
 
   <div class="bg-black p-6 shadow-lg">
 
@@ -185,16 +215,63 @@ const NewsUpdatesPage = () => {
       <button class="bg-yellow-500 text-black text-xs font-regular py-2 px-4 hover:bg-yellow-600 transition-colors">View Details</button>    </div>
   </div>
 
-</div>
-</div>
+ </div>
+ </div>
+       </div>
+
+       {/* Calendar Section */}
+       <div className="w-[45%] p-8 text-white flex flex-col justify-start">
+         <h2 className="text-lg font-normal mb-4 mt-10 text-white">Events Calendar</h2>
+      
+      {/* Date Picker Section */}
+      <div className='bg-neutral-900/70 border-[0.8px] border-neutral-900 rounded-xl flex items-center justify-center w-full p-8'>
+      <div className="flex space-x-2">
+        {dates.map((d, index) => (
+          <div
+            key={index}
+            onClick={() => setSelectedDate(d.date)}
+            className={`
+              flex flex-col items-center justify-center p-4 rounded-4xl cursor-pointer
+              ${d.date === selectedDate ? 'bg-yellow-500 text-black' : 'bg-neutral-900 text-white'}
+            `}
+          >
+            <span className="text-sm font-light">{d.day}</span>
+            <span className="text-md font-semibold">{d.date}</span>
+          </div>
+        ))}
+      </div>
       </div>
 
-        {/* Rightmost column */}
+      {/* Events Section */}
+<div className="w-full mx-auto mt-8">
+  {events.length > 0 ? (
+    <div className="space-y-4">
+      {events.map((event, index) => (
+        <div
+          key={index}
+          className="bg-neutral-900 p-4 rounded-xl shadow-lg flex flex-col gap-2"
+        >
+          <p className="text-neutral-400 text-sm">{event.time}</p>
+          <h4 className="text-white text-md font-medium">{event.title}</h4>
+          <p className="text-neutral-500 text-sm">{event.location}</p>
 
-    
+          {/* Set Reminder Button */}
+          <button
+            onClick={() => console.log(`Reminder set for: ${event.title}`)}
+            className="mt-2 px-3 py-2 text-sm rounded-full bg-white hover:bg-neutral-700 hover:text-white text-black w-fit"
+          >
+            Set Reminder
+          </button>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <p className="text-neutral-500 text-center">No events for this date.</p>
+  )}
 </div>
 
-</div>
+     </div>
+    </div>
   );
 };
 
