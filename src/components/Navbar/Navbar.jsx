@@ -132,7 +132,7 @@ A gateway to explore the Moon’s history, mysteries, and future possibilities. 
                   </a>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
-                  <a href="#">
+                  <a href="/tools">
                     <div className="font-medium">Astronomy Tools</div>
                     <div className="text-muted-foreground text-xs">
                       Explore interactive tools to observe and study the Moon.
