@@ -8,12 +8,15 @@ const BentoGrid = ({
   ...props
 }) => {
   return (
+    <div>
+      
     <div className="flex justify-center w-full py-8">
       <div
         className={cn("grid w-[80%] auto-rows-[24rem] h-[32rem] grid-cols-3 gap-4", className)}
         {...props}>
         {children}
       </div>
+    </div>
     </div>
   );
 };
@@ -26,6 +29,7 @@ const BentoCard = ({
   description,
   cta,
   href,
+  onClick,
   ...props
 }) => (
   <div
@@ -40,6 +44,7 @@ className={cn(
   "after:absolute after:inset-x-0 after:bottom-0 after:h-1/2 after:bg-gradient-to-t after:from-black after:to-transparent after:opacity-90",
   className
 )}
+    onClick={onClick}
     {...props}>
     {backgroundImage && (
       <img
@@ -87,6 +92,7 @@ className={cn(
     <div
       className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] group-hover:dark:bg-neutral-800/10" />
   </div>
+  
 );
 
 export { BentoCard, BentoGrid };

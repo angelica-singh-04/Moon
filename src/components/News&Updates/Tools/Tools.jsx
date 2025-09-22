@@ -7,6 +7,7 @@ import {
 } from "@radix-ui/react-icons";
 
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
+import { useNavigate } from "react-router-dom";
 import GridSvg from "@/assets/Group 5.jpeg";
 import grid2 from "@/assets/grid2.jpeg";
 import grid3 from "@/assets/grid3.jpeg";
@@ -48,7 +49,7 @@ const features = [
     Icon: CalendarIcon,
     name: "Astronomy Calculators",
     description: "Calculate distance , weights and travel times.",
-    href: "/",
+    href: "/calculator",
     cta: "Learn more",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
      backgroundImage: grid4,
@@ -68,12 +69,24 @@ const features = [
 ];
 
 function BentoDemo() {
+  const navigate = useNavigate();
   return (
+    <div>
     <BentoGrid className="lg:grid-rows-3 mt-25">
+      
       {features.map((feature) => (
-        <BentoCard key={feature.name} {...feature} />
+        <BentoCard
+          key={feature.name}
+          {...feature}
+          onClick={
+            feature.name === "Astronomy Calculators"
+              ? () => navigate("/calculator")
+              : undefined
+          }
+        />
       ))}
     </BentoGrid>
+    </div>
   );
 }
 
